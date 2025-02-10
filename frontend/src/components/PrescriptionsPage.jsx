@@ -37,7 +37,7 @@ const handleUpdate = (e) => {
             <h2>Prescriptions</h2>
             <ul>
                 {prescriptions.map((pres) => (
-                    <li key={pres.id}>Patient ID: {pres.patient_name} - Medication ID: {pres.medication_name} - Dosage: {pres.dosage}
+                    <li key={pres.id}>Patient Name: {pres.patient_name}  , Dosage: {pres.dosage}  ,frequency:{pres.frequency}
                         <button onClick={() => handleEdit(pres)}>Edit</button>
                         <button onClick={() => handleDelete(pres.id)}>Delete</button>
                     </li>
@@ -45,7 +45,7 @@ const handleUpdate = (e) => {
             </ul>
             <h3>Add Prescription</h3>
             <form onSubmit={handleSubmit}>
-            
+           
                 <input type="number" placeholder="Patient ID" value={newPrescription.patient_id} onChange={(e) => setNewPrescription({...newPrescription, patient_id: e.target.value })} required />
                 <input type="number" placeholder="Medication ID" value={newPrescription.medication_id} onChange={(e) => setNewPrescription({...newPrescription, medication_id: e.target.value })} required />
                 <input type="text" placeholder="Dosage" value={newPrescription.dosage} onChange={(e) => setNewPrescription({...newPrescription, dosage: e.target.value })} required />
@@ -58,8 +58,6 @@ const handleUpdate = (e) => {
                 <div className="popup">
                     <h3>Edit Prescription</h3>
                     <form onSubmit={handleUpdate}>
-                        <input type="number" value={editPrescription.patient_name} onChange={(e) => setEditPrescription({...editPrescription, patient_id: e.target.value })} required />
-                        <input type="number" value={editPrescription.medication_name} onChange={(e) => setEditPrescription({...editPrescription, medication_id: e.target.value })} required />
                         <input type="text" value={editPrescription.dosage} onChange={(e) => setEditPrescription({...editPrescription, dosage: e.target.value })} required />
                         <input type="text" value={editPrescription.frequency} onChange={(e) => setEditPrescription({...editPrescription, frequency: e.target.value })} required />
                         <input type="date" value={editPrescription.start_date} onChange={(e) => setEditPrescription({...editPrescription, start_date: e.target.value })} required />

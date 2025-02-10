@@ -76,8 +76,9 @@ const updatePrescript = async (req, res) => {
         const { patient_id, medication_id, dosage, frequency, start_date, end_date } = req.body;
 
         const result = await pool.query(
-            "UPDATE prescriptions SET patient_id = $1, medication_id = $2, dosage = $3, frequency = $4, start_date = $5, end_date = $6 WHERE id = $7 RETURNING *",
-            [patient_id, medication_id, dosage, frequency, start_date, end_date, id]
+            // "UPDATE prescriptions SET patient_id = $1, medication_id = $2, dosage = $3, frequency = $4, start_date = $5, end_date = $6 WHERE id = $7 RETURNING *",
+            "UPDATE prescriptions SET dosage = $1, frequency = $2, start_date = $3, end_date = $4 WHERE id = $5 RETURNING *",
+            [dosage, frequency, start_date, end_date, id]
         );
 
         if (result.rowCount === 0) {
